@@ -329,7 +329,9 @@ class MainApp(MDApp):
             oldbal = self.dabloons - tx['price']
             newbal = oldbal + new_price
 
-        self.dabloons.credits = newbal
+        self.dabloons.data['dabloons']['credits'] = newbal
+        self.main_text.text = f"Your dabloons: {self.dabloons}"
+
 
         self.transaction_history.edit(int(self.last_ref) - 1, "price", new_price)
         self.transaction_history.edit(int(self.last_ref) - 1, "name", new_name)
