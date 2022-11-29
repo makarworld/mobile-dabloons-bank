@@ -13,7 +13,7 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
-from utils import Dabloons, Transactions
+#from utils import Dabloons, Transactions
 
 """
 TODO:
@@ -28,8 +28,8 @@ TODO:
 
 class MainApp(MDApp):
     def build(self):
-        self.dabloons = Dabloons()
-        self.transaction_history = Transactions()
+        self.dabloons = 0#Dabloons()
+        self.transaction_history = []#Transactions()
         self.show_history_page = 1
         self.PAGE_LIMIT = 8
 
@@ -103,8 +103,8 @@ class MainApp(MDApp):
 
             if self.deposit > 0:
                 self.dabloons += self.deposit
-                print(self.dabloons)
-                print(self.dabloons.credits)
+                #print(self.dabloons)
+                #print(self.dabloons.credits)
                 self.main_text.text = f"Your dabloons: {self.dabloons}"
                 self.add_transaction("deposit", price=self.box.children[1].text)
 
@@ -329,7 +329,7 @@ class MainApp(MDApp):
             oldbal = self.dabloons - tx['price']
             newbal = oldbal + new_price
 
-        self.dabloons.data['dabloons']['credits'] = newbal
+        self.dabloons = newbal#.data['dabloons']['credits'] = newbal
         self.main_text.text = f"Your dabloons: {self.dabloons}"
 
 
